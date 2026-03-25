@@ -1,0 +1,138 @@
+" ==========================================
+" 🧩 Core IdeaVim & Extensions
+" ==========================================
+let mapleader = " "
+
+" Enable IdeaVim extensions and features
+set ideavim_extension
+set ideamarks
+set nerdtree
+set surround
+
+" NERDTree toggle
+nmap <leader>fe :NERDTreeToggle<CR>
+
+
+" ==========================================
+" ⚙️ General Editor Settings
+" ==========================================
+" Keep 5 lines visible above/below cursor
+set scrolloff=5
+
+" Incremental search (live highlight)
+set incsearch
+
+" Disable Ex mode, map Q to format text
+map Q gq
+
+" Open Project tool window (Cmd + J)
+map <D-j> <Action>(ActivateProjectToolWindow)
+
+
+" ==========================================
+" 🔌 Plugins
+" ==========================================
+" Highlight yanked text
+Plug 'machakann/vim-highlightedyank'
+
+" Comment / uncomment with gc
+Plug 'tpope/vim-commentary'
+
+
+" ==========================================
+" 📋 Clipboard & Delete Behavior
+" ==========================================
+" Use system clipboard
+set clipboard=unnamedplus
+
+" Prevent delete/change from overriding clipboard
+nnoremap d "_d
+nnoremap c "_c
+nnoremap s "_s
+nnoremap x "_x
+vnoremap d "_d
+vnoremap c "_c
+vnoremap s "_s
+vnoremap x "_x
+
+
+" ==========================================
+" ⌨️ Insert Mode Enhancements
+" ==========================================
+" Exit insert mode quickly
+imap jj <Esc>
+imap <D-e> <Esc>
+
+" Move cursor in insert mode (Alt + hjkl)
+inoremap <M-h> <Left>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-l> <Right>
+
+" Paste from clipboard in insert mode
+imap <D-r>+ <Esc>"+pa
+
+
+" ==========================================
+" 🖱 Cursor Appearance
+" ==========================================
+" Normal/Visual: horizontal bar
+" Insert: vertical line
+set guicursor=o-v:hor1,i:ver1
+
+
+" ==========================================
+" 🔤 Navigation & Movement
+" ==========================================
+" Jump to start/end of line
+nnoremap H ^
+nnoremap L $
+
+" Paste shortcut (Cmd + R twice)
+nmap <D-r><D-r> p
+
+
+" ==========================================
+" ✂️ Selection & Visual Mode
+" ==========================================
+" Enable selection behavior
+set selectmode=ideaselection
+set selectmode=key
+set keymodel=startsel,stopsel
+
+" Select / unselect word
+map <leader>v <Action>(EditorSelectWord)
+map <leader>V <Action>(EditorUnSelectWord)
+
+
+" ==========================================
+" 🪟 Window / Tab Management
+" ==========================================
+" Close current tab (Cmd + W)
+map <D-w> <Action>(CloseContent)
+imap <D-w> <Action>(CloseContent)
+vmap <D-w> <Action>(CloseContent)
+
+" Alternative close using Vim command
+nnoremap <D-w> :close<CR>
+inoremap <D-w> <Esc>:close<CR>
+vnoremap <D-w> <Esc>:close<CR>
+
+
+" ==========================================
+" 🔍 Search & Navigation (IDE)
+" ==========================================
+" Search Everywhere (Cmd + P)
+map <D-p> <Action>(GotoFile)
+imap <D-p> <Action>(GotoFile)
+vmap <D-p> <Action>(GotoFile)
+
+
+" ==========================================
+" 🚫 (Optional) Disable Arrow Keys
+" ==========================================
+" Uncomment to force hjkl usage
+" nnoremap <Up> <Nop>
+" nnoremap <Down> <Nop>
+" nnoremap <Left> <Nop>
+" nnoremap <Right> <Nop>
