@@ -5,13 +5,15 @@ let mapleader = " "
 
 " Enable IdeaVim extensions and features
 set ideavim_extension
+set keep-english-in-normal-and-restore-in-insert
 set ideamarks
 set nerdtree
 set surround
+set hlsearch
+set ideavim.handlekeys=true
 
 " NERDTree toggle
 nmap <leader>fe :NERDTreeToggle<CR>
-
 
 " ==========================================
 " ⚙️ General Editor Settings
@@ -69,6 +71,7 @@ inoremap <M-j> <Down>
 inoremap <M-k> <Up>
 inoremap <M-l> <Right>
 
+
 " Paste from clipboard in insert mode
 imap <D-r>+ <Esc>"+pa
 
@@ -109,7 +112,7 @@ map <leader>V <Action>(EditorUnSelectWord)
 " 🪟 Window / Tab Management
 " ==========================================
 " Close current tab (Cmd + W)
-map <D-w> <Action>(CloseContent)
+nmap <D-w> <Action>(CloseContent)
 imap <D-w> <Action>(CloseContent)
 vmap <D-w> <Action>(CloseContent)
 
@@ -123,7 +126,7 @@ vnoremap <D-w> <Esc>:close<CR>
 " 🔍 Search & Navigation (IDE)
 " ==========================================
 " Search Everywhere (Cmd + P)
-map <D-p> <Action>(GotoFile)
+nmap <D-p> <Action>(GotoFile)
 imap <D-p> <Action>(GotoFile)
 vmap <D-p> <Action>(GotoFile)
 
@@ -132,7 +135,15 @@ vmap <D-p> <Action>(GotoFile)
 " 🚫 (Optional) Disable Arrow Keys
 " ==========================================
 " Uncomment to force hjkl usage
-" nnoremap <Up> <Nop>
-" nnoremap <Down> <Nop>
-" nnoremap <Left> <Nop>
-" nnoremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
+
+" ===========================================
+" ActivateProjectToolWindow
+" ===========================================
+nnoremap <D-Enter> <Action>(SelectInProjectView)
+inoremap <D-Enter> <Action>(SelectInProjectView)
+vnoremap <D-Enter> <Action>(SelectInProjectView)
